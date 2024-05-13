@@ -33,11 +33,14 @@ def predict_stock():
 
     # Perform ARIMA analysis
     arima_pred, error_arima, image = ARIMA_ALGO(df, quote)
+    accuracy = 100 - error_arima
+
 
     # Return prediction, error, and image
     return jsonify({
         'quote': quote,
         'arima_prediction': arima_pred,
+        'arima_accuracy': accuracy,
         'arima_rmse': error_arima,
         'image': image
     })
